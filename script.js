@@ -2,181 +2,185 @@
 const searchInput = document.getElementById('searchInput');
 const searchBtn = document.getElementById('searchBtn');
 const content = document.getElementById('content');
-const modalOverlay = document.getElementById('modalOverlay');
-const cancelBtn = document.getElementById('cancelBtn');
-const confirmBtn = document.getElementById('confirmBtn');
-const nameInput = document.getElementById('nameInput');
-const emailInput = document.getElementById('emailInput');
-const passwordInput = document.getElementById('passwordInput');
-const notifWrapper = document.querySelector('.notif-wrapper');
-const notifDropdown = document.getElementById('notifDropdown');
-const notifBadge = document.querySelector('.notif-badge');
-const menuBtn = document.querySelector('.menu-btn');
-const sidebar = document.getElementById('sidebar');
-const signinBtn = document.getElementById('signinBtn');
 
-// ── SEARCH FUNCTION ──
-function doSearch() {
-    const query = searchInput.value.trim();
-
-    if (!query) {
-        searchInput.focus();
-        return;
-    }
-
-    content.innerHTML = '<p style="padding:20px;font-size:16px;">Loading videos...</p>';
-
-    // Simulated search results (no API key needed)
-    const fakeResults = [
-        { title: query + ' - Full Tutorial', channel: 'Dev Masters', views: '120K', time: '1 year ago', letter: 'D' },
-        { title: 'Learn ' + query + ' in 1 Hour', channel: 'Code Academy', views: '85K', time: '2 years ago', letter: 'C' },
-        { title: query + ' for Beginners 2024', channel: 'Tech With Tim', views: '200K', time: '6 months ago', letter: 'T' },
-        { title: 'Advanced ' + query + ' Tips', channel: 'JS Mastery', views: '55K', time: '3 months ago', letter: 'J' },
-        { title: query + ' Project Build', channel: 'Traversy Media', views: '310K', time: '1 year ago', letter: 'T' },
-        { title: query + ' Crash Course', channel: 'Web Dev Simplified', views: '400K', time: '2 years ago', letter: 'W' },
-    ];
-
-    displayVideos(fakeResults);
+// ── VIDEO DATABASE ──
+const videos = [
+{
+    title: "Build YouTube Clone with HTML CSS",
+    channel: "Web Dev Simplified",
+    views: "245K views",
+    time: "1 year ago",
+    color: "#e53935",
+    videoId: "ykztGVW6x7w"
+},
+{
+    title: "JavaScript Full Course",
+    channel: "Programming with Mosh",
+    views: "1.2M views",
+    time: "8 months ago",
+    color: "#1e88e5",
+    videoId: "W6NZfCO5SIk"
+},
+{
+    title: "CSS Grid Tutorial",
+    channel: "Traversy Media",
+    views: "830K views",
+    time: "2 years ago",
+    color: "#43a047",
+    videoId: "0xMQfnTU6oo"
+},
+{
+    title: "React JS Crash Course",
+    channel: "Codevolution",
+    views: "520K views",
+    time: "6 months ago",
+    color: "#8e24aa",
+    videoId: "w7ejDZ8SWv8"
+},
+{
+    title: "Node JS Beginner Tutorial",
+    channel: "Dev Ed",
+    views: "300K views",
+    time: "1 year ago",
+    color: "#f4511e",
+    videoId: "TlB_eWDSMt4"
+},
+{
+    title: "HTML Full Tutorial",
+    channel: "freeCodeCamp",
+    views: "2M views",
+    time: "3 years ago",
+    color: "#00897b",
+    videoId: "pQN-pnXPaVg"
+},
+{
+    title: "Build Netflix Clone",
+    channel: "Easy Tutorials",
+    views: "420K views",
+    time: "11 months ago",
+    color: "#f9a825",
+    videoId: "jUuqBZwwkQw"
+},
+{
+    title: "Responsive Website Design",
+    channel: "Online Tutorials",
+    views: "190K views",
+    time: "5 months ago",
+    color: "#6d4c41",
+    videoId: "srvUrASNj0s"
+},
+{
+    title: "Modern JavaScript ES6",
+    channel: "Academind",
+    views: "780K views",
+    time: "2 years ago",
+    color: "#3949ab",
+    videoId: "NCwa_xi0Uuc"
+},
+{
+    title: "Build Spotify Clone",
+    channel: "CodingNepal",
+    views: "275K views",
+    time: "7 months ago",
+    color: "#c62828",
+    videoId: "1hHMwLxN6EM"
 }
+];
 
 // ── DISPLAY VIDEOS ──
-function displayVideos(videos) {
+function displayVideos(videoArray) {
+
     content.innerHTML = '';
 
-    const colors = ['#e53935','#1e88e5','#43a047','#8e24aa','#f4511e','#00897b','#f9a825','#c62828'];
+    videoArray.forEach(video => {
 
-    videos.forEach((video, index) => {
-        const videoCard = document.createElement('div');
-        videoCard.className = 'video-card';
+        const card = document.createElement('div');
+        card.className = 'video-card';
 
-        const color = colors[index % colors.length];
-        const letter = video.letter || video.channel.charAt(0);
+        card.innerHTML = `
+        
+        <div class="thumbnail">
+        
+            <iframe
+                src="https://www.youtube.com/embed/${video.videoId}?mute=1&controls=0"
+                allowfullscreen>
+            </iframe>
 
-        videoCard.innerHTML = 
+            <div class="play-overlay">
+                <i class="ri-play-circle-fill"></i>
+            </div>
 
-        content.appendChild(videoCard);
+        </div>
+
+        <div class="video-info">
+
+            <div class="channel-icon"
+                style="background:${video.color};">
+                ${video.channel.charAt(0)}
+            </div>
+
+            <div class="video-details">
+
+                <p class="video-title">
+                    ${video.title}
+                </p>
+
+                <p class="channel-name">
+                    ${video.channel}
+                </p>
+
+                <p class="video-meta">
+                    ${video.views} • ${video.time}
+                </p>
+
+            </div>
+
+        </div>
+        `;
+
+        // ── HOVER PLAY EFFECT ──
+        const iframe = card.querySelector("iframe");
+
+        card.addEventListener("mouseenter", () => {
+            iframe.src =
+            `https://www.youtube.com/embed/${video.videoId}?autoplay=1&mute=1&controls=0`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+            iframe.src =
+            `https://www.youtube.com/embed/${video.videoId}?mute=1&controls=0`;
+        });
+
+        content.appendChild(card);
     });
 }
 
-// ── SEARCH BUTTON CLICK ──
+// ── SEARCH ──
+function doSearch() {
+
+    const query = searchInput.value.toLowerCase().trim();
+
+    if (!query) {
+        displayVideos(videos);
+        return;
+    }
+
+    const filtered = videos.filter(video =>
+        video.title.toLowerCase().includes(query) ||
+        video.channel.toLowerCase().includes(query)
+    );
+
+    displayVideos(filtered);
+}
+
+// ── EVENTS ──
 searchBtn.addEventListener('click', doSearch);
 
-// ── ENTER KEY ──
-searchInput.addEventListener('keypress', (e) => {
+searchInput.addEventListener('keyup', (e) => {
     if (e.key === 'Enter') {
         doSearch();
     }
 });
 
-// ── CHIPS ──
-const chips = document.querySelectorAll('.chip');
-chips.forEach(chip => {
-    chip.addEventListener('click', () => {
-        chips.forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-
-        // Simulate filter
-        searchInput.value = chip.textContent === 'All' ? '' : chip.textContent;
-        if (chip.textContent !== 'All') {
-            doSearch();
-        }
-    });
-});
-
-// ── SIDEBAR ITEMS ──
-const sidebarItems = document.querySelectorAll('.sidebar-item');
-sidebarItems.forEach(item => {
-    item.addEventListener('click', () => {
-        sidebarItems.forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-    });
-});
-// ── MENU TOGGLE (mobile) ──
-menuBtn.addEventListener('click', () => {
-    if (sidebar.style.display === 'block') {
-        sidebar.style.display = 'none';
-    } else {
-        sidebar.style.display = 'block';
-        sidebar.style.position = 'fixed';
-        sidebar.style.top = '56px';
-        sidebar.style.left = '0';
-        sidebar.style.zIndex = '150';
-        sidebar.style.height = 'calc(100vh - 56px)';
-        sidebar.style.boxShadow = '4px 0 16px rgba(0,0,0,0.1)';
-    }
-});
-
-// ── NOTIFICATIONS ──
-notifWrapper.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isVisible = notifDropdown.style.display === 'block';
-    notifDropdown.style.display = isVisible ? 'none' : 'block';
-    if (!isVisible) {
-        notifBadge.style.display = 'none';
-    }
-});
-
-document.addEventListener('click', () => {
-    notifDropdown.style.display = 'none';
-});
-
-// ── SIGN IN MODAL ──
-signinBtn.addEventListener('click', () => {
-    modalOverlay.classList.add('show');
-});
-
-cancelBtn.addEventListener('click', () => {
-    modalOverlay.classList.remove('show');
-    nameInput.value = '';
-    emailInput.value = '';
-    passwordInput.value = '';
-});
-
-// ── CONFIRM SIGN IN ──
-confirmBtn.addEventListener('click', () => {
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-
-    if (!name|| !email ||!password) {
-        alert('Please fill in all fields');
-        return;
-    }
-
-    if (!email.includes('@')) {
-        alert('Please enter a valid email');
-        return;
-    }
-
-    if (password.length < 6) {
-        alert('Password must be at least 6 characters');
-        return;
-    }
-
-    // Replace sign in button with avatar + logout
-
-
-    modalOverlay.classList.remove('show');
-    nameInput.value = '';
-    emailInput.value = '';
-    passwordInput.value = '';
-
-    // Add logout function
-    setTimeout(() => {
-        const logoutBtn = document.getElementById('logoutBtn');
-        if (logoutBtn) {
-            logoutBtn.addEventListener('click', () => {
-                location.reload();
-            });
-        }
-    }, 100);
-
-    alert('Welcome, ' + name + '! You are now signed in.');
-});
-
-// ── CLOSE MODAL OUTSIDE CLICK ──
-modalOverlay.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) {
-        modalOverlay.classList.remove('show');
-    }
-});
+// ── INITIAL LOAD ──
+displayVideos(videos);

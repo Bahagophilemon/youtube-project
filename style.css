@@ -591,3 +591,55 @@ body {
         padding: 24px;
     }
 }
+/* VIDEO HOVER EFFECT */
+.video-card {
+    position: relative;
+}
+
+.thumbnail {
+    position: relative;
+    overflow: hidden;
+}
+
+.thumbnail iframe {
+    pointer-events: none;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover iframe {
+    transform: scale(1.05);
+}
+
+/* PLAY OVERLAY */
+.play-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.play-overlay i {
+    font-size: 60px;
+    color: white;
+}
+
+.video-card:hover .play-overlay {
+    opacity: 1;
+}
+
+/* VIDEO ANIMATION */
+.video-card:hover {
+    transform: translateY(-4px);
+}
+
+/* BETTER MOBILE */
+@media(max-width:768px){
+    .content{
+        grid-template-columns: 1fr;
+    }
+}
