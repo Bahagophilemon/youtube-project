@@ -495,7 +495,7 @@ body {
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-   height: auto; min-height:180px;
+   height: 300px;
 }
 
 .video-card:hover {
