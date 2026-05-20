@@ -1,193 +1,86 @@
 // ── ELEMENTS ──
 const searchInput = document.getElementById('searchInput');
 const searchBtn = document.getElementById('searchBtn');
-const content = document.getElementById('content');
 
-// ── VIDEO DATABASE ──
-const videos = [
-{
-    title: "Build YouTube Clone with HTML CSS",
-    channel: "Web Dev Simplified",
-    views: "245K views",
-    time: "1 year ago",
-    color: "#e53935",
-    videoId: "ykztGVW6x7w"
-},
-{
-    title: "JavaScript Full Course",
-    channel: "Programming with Mosh",
-    views: "1.2M views",
-    time: "8 months ago",
-    color: "#1e88e5",
-    videoId: "W6NZfCO5SIk"
-},
-{
-    title: "CSS Grid Tutorial",
-    channel: "Traversy Media",
-    views: "830K views",
-    time: "2 years ago",
-    color: "#43a047",
-    videoId: "0xMQfnTU6oo"
-},
-{
-    title: "React JS Crash Course",
-    channel: "Codevolution",
-    views: "520K views",
-    time: "6 months ago",
-    color: "#8e24aa",
-    videoId: "w7ejDZ8SWv8"
-},
-{
-    title: "Node JS Beginner Tutorial",
-    channel: "Dev Ed",
-    views: "300K views",
-    time: "1 year ago",
-    color: "#f4511e",
-    videoId: "TlB_eWDSMt4"
-},
-{
-    title: "HTML Full Tutorial",
-    channel: "freeCodeCamp",
-    views: "2M views",
-    time: "3 years ago",
-    color: "#00897b",
-    videoId: "pQN-pnXPaVg"
-},
-{
-    title: "Build Netflix Clone",
-    channel: "Easy Tutorials",
-    views: "420K views",
-    time: "11 months ago",
-    color: "#f9a825",
-    videoId: "jUuqBZwwkQw"
-},
-{
-    title: "Responsive Website Design",
-    channel: "Online Tutorials",
-    views: "190K views",
-    time: "5 months ago",
-    color: "#6d4c41",
-    videoId: "srvUrASNj0s"
-},
-{
-    title: "Modern JavaScript ES6",
-    channel: "Academind",
-    views: "780K views",
-    time: "2 years ago",
-    color: "#3949ab",
-    videoId: "NCwa_xi0Uuc"
-},
-{
-    title: "Build Spotify Clone",
-    channel: "CodingNepal",
-    views: "275K views",
-    time: "7 months ago",
-    color: "#c62828",
-    videoId: "1hHMwLxN6EM"
-}
-];
+// ── DETECT MOBILE ──
+const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-// ── DISPLAY VIDEOS ──
-function displayVideos(videoArray) {
+// ── HOVER / CLICK EFFECT ──
+function applyHoverEffect() {
+    document.querySelectorAll('.video-card').forEach(card => {
+        const iframe = card.querySelector('iframe');
+        const overlay = card.querySelector('.play-overlay');
 
-    content.innerHTML = '';
+        // Get the video ID from the iframe src
+        const srcParts = iframe.src.split('/embed/');
+        const videoId = srcParts[1].split('?')[0];
 
-    videoArray.forEach(video => {
+        const pausedSrc = `https://www.youtube.com/embed/${videoId}?mute=1&controls=0`;
+        const playingSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0`;
 
-        const card = document.createElement('div');
-        card.className = 'video-card';
+        iframe.src = pausedSrc;
 
-        card.innerHTML = `
-        
-        <div class="thumbnail">
-        
-            <iframe
-                src="https://www.youtube.com/embed/${video.videoId}?mute=1&controls=0"
-                allowfullscreen>
-            </iframe>
+        if (isMobile) {
+            // ── MOBILE: TAP TO PLAY ──
+            card.addEventListener('click', () => {
 
-            <div class="play-overlay">
-                <i class="ri-play-circle-fill"></i>
-            </div>
+                // pause all other cards first
+                document.querySelectorAll('.video-card').forEach(otherCard => {
+                    if (otherCard !== card) {
+                        const otherIframe = otherCard.querySelector('iframe');
+                        const otherSrcParts = otherIframe.src.split('/embed/');
+                        const otherVideoId = otherSrcParts[1].split('?')[0];
+                        otherIframe.src = `https://www.youtube.com/embed/${otherVideoId}?mute=1&controls=0`;
+                        otherCard.classList.remove('playing');
+                    }
+                });
 
-        </div>
+                if (card.classList.contains('playing')) {
+                    iframe.src = pausedSrc;
+                    card.classList.remove('playing');
+                } else {
+                    iframe.src = playingSrc;
+                    card.classList.add('playing');
+                }
+            });
 
-        <div class="video-info">
+        } else {
+            // ── DESKTOP: HOVER TO PLAY ──
+            card.addEventListener('mouseenter', () => {
+                iframe.src = playingSrc;
+                if (overlay) overlay.style.opacity = '1';
+            });
 
-            <div class="channel-icon"
-                style="background:${video.color};">
-                ${video.channel.charAt(0)}
-            </div>
-
-            <div class="video-details">
-
-                <p class="video-title">
-                    ${video.title}
-                </p>
-
-                <p class="channel-name">
-                    ${video.channel}
-                </p>
-
-                <p class="video-meta">
-                    ${video.views} • ${video.time}
-                </p>
-
-            </div>
-
-        </div>
-        `;
-
-        // ── HOVER PLAY EFFECT ──
-        const iframe = card.querySelector("iframe");
-
-        card.addEventListener("mouseenter", () => {
-            iframe.src =
-            `https://www.youtube.com/embed/${video.videoId}?autoplay=1&mute=1&controls=0`;
-        });
-
-        card.addEventListener("mouseleave", () => {
-            iframe.src =
-            `https://www.youtube.com/embed/${video.videoId}?mute=1&controls=0`;
-        });
-
-        content.appendChild(card);
+            card.addEventListener('mouseleave', () => {
+                iframe.src = pausedSrc;
+                if (overlay) overlay.style.opacity = '0';
+            });
+        }
     });
 }
 
 // ── SEARCH ──
 function doSearch() {
-
     const query = searchInput.value.toLowerCase().trim();
 
-    if (!query) {
-        displayVideos(videos);
-        return;
-    }
+    document.querySelectorAll('.video-card').forEach(card => {
+        const title = card.querySelector('.video-title').textContent.toLowerCase();
+        const channel = card.querySelector('.channel-name').textContent.toLowerCase();
 
-    const filtered = videos.filter(video =>
-        video.title.toLowerCase().includes(query) ||
-        video.channel.toLowerCase().includes(query)
-    );
-
-    displayVideos(filtered);
+        if (!query || title.includes(query) || channel.includes(query)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
 }
 
 // ── EVENTS ──
 searchBtn.addEventListener('click', doSearch);
 
 searchInput.addEventListener('keyup', (e) => {
-    if (e.key === 'Enter') {
-        doSearch();
-    }
+    if (e.key === 'Enter') doSearch();
 });
 
-// ── INITIAL LOAD ──
-displayVideos(videos);
-
-const menuBtn = document.querySelector(".menu-btn");
-const sidebar = document.getElementById("sidebar");
-
-menuBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("show");
-});
+// ── RUN ON LOAD ──
+applyHoverEffect();
