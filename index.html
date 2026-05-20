@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- TOP HEADER -->
+    <div class="header">
+        <div class="left">
+            <span class="menu-btn"><i class="ri-menu-line"></i></span>
+            <div class="logo">
+                <i class="ri-youtube-fill yt-icon"></i>
+                <h2>YouTube</h2>
+            </div>
+        </div>
+
+        <div class="middle">
+            <input type="text" id="searchInput" placeholder="Search">
+            <button id="searchBtn"><i class="ri-search-line"></i></button>
+        </div>
+
+        <div class="right">
+            <span class="icon-btn"><i class="ri-video-add-line"></i></span>
+
+            <div class="notif-wrapper">
+                <i class="ri-notification-line"></i>
+                <span class="notif-badge">3</span>
+            </div>
+
+            <button class="signin-btn" id="signinBtn">
+                <i class="ri-user-line"></i>
+                Sign in
+            </button>
+        </div>
+    </div>
+
+
+    <!-- CATEGORY BAR -->
+    <div class="chips-bar">
+        <div class="chip active">All</div>
+        <div class="chip">Music</div>
+        <div class="chip">HTML</div>
+        <div class="chip">Mixes</div>
+        <div class="chip">Podcasts</div>
+        <div class="chip">Nollywood</div>
+        <div class="chip">Celine Dion</div>
+        <div class="chip">Europop Music</div>
+        <div class="chip">R&B</div>
+        <div class="chip">Gaming</div>
+        <div class="chip">News</div>
+        <div class="chip">HipHop</div>
+        <div class="chip">New Videos</div>
+        <div class="chip">Watched</div>
+    </div>
+
+
+    <!-- MAIN PAGE -->
+    <div class="main">
+
+        <!-- LEFT SIDE MENU -->
+        <div class="sidebar" id="sidebar">
+
+            <div class="sidebar-item active">
+                <i class="ri-home-5-fill"></i><span>Home</span>
+            </div>
+
+            <div class="sidebar-item">
+                <i class="ri-movie-line"></i><span>Short Videos</span>
+            </div>
+
+            <div class="sidebar-item">
+                <i class="ri-tv-line"></i><span>Subscriptions</span>
+            </div>
+
+            <hr>
+
+            <p class="section-title">Your Section</p>
+
+            <div class="sidebar-item">
+                <i class="ri-history-line"></i><span>Watch History</span>
+            </div>
+
+            <div class="sidebar-item">
+                <i class="ri-play-list-line"></i><span>Your Playlists</span>
+            </div>
+
+            <div class="sidebar-item">
+                <i class="ri-time-line"></i><span>Watch Later</span>
+            </div>
+
+            <div class="sidebar-item">
+                <i class="ri-thumb-up-line"></i><span>Liked Videos</span>
+            </div>
+
+            <div class="sidebar-item">
+                <i class="ri-download-line"></i><span>Downloads</span>
+            </div>
+
+            <hr>
+
+            <p class="section-title">Explore</p>
+
+            <div class="sidebar-item">
+                <i class="ri-music-line"></i><span>Music</span>
+            </div>
+
+            <div class="sidebar-item">
+                <i class="ri-gamepad-line"></i><span>Gaming</span>
+            </div>
+
+            <div class="sidebar-item">
+                <i class="ri-newspaper-line"></i><span>News</span>
+            </div>
+
+            <div class="sidebar-item">
+                <i class="ri-arrow-down-s-line"></i><span>More</span>
+            </div>
+
+            <hr>
+
+            <p class="section-title">More from YouTube</p>
+
+            <div class="sidebar-item yt-premium">
+                <i class="ri-youtube-line"></i><span>YouTube Premium</span>
+            </div>
+
+            <div class="sidebar-item yt-music">
+                <i class="ri-music-2-line"></i><span>YouTube Music</span>
+            </div>
+<div class="sidebar-item yt-kids">
+                <i class="ri-parent-line"></i><span>YouTube Kids</span>
+            </div>
+
+        </div>
+
+
+        <!-- VIDEOS AREA -->
+        <div class="content" id="content">
+
+            <!-- VIDEO 1 -->
+             <!-- https://www.youtube.com/watch?v=ykztGVW6x7w&pp=ygUNaG93IHRvIGNsb25lIA%3D%3D -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <iframe src="https://www.youtube.com/watch?v=ykztGVW6x7w&pp=ygUNaG93IHRvIGNsb25lIA%3D%3D" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background:#e53935;">A</div>
+                    <div class="video-details">
+                        <p class="video-title">How to Build YouTube Page with HTML and CSS</p>
+                        <p class="channel-name">Web Dev Simplified</p>
+                        <p class="video-meta">147K views · 5 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 2 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <iframe src="https://www.youtube.com/embed/T6wbugWr" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background:#1e88e5;">B</div>
+                    <div class="video-details">
+                        <p class="video-title">Build YouTube Website Step by Step</p>
+                        <p class="channel-name">Code with Dev</p>
+                        <p class="video-meta">85K views · 2 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 3 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <iframe src="https://www.youtube.com/embed/T6wbugWr" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background:#43a047;">C</div>
+                    <div class="video-details">
+                        <p class="video-title">Simple YouTube Page Design Tutorial</p>
+                        <p class="channel-name">Dev Channel</p>
+                        <p class="video-meta">42K views · 1 year ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- (rest remain same titles simplified similarly...) -->
+
+        </div>
+    </div>
+
+    <!-- NOTIFICATIONS -->
+    <div class="notif-dropdown" id="notifDropdown">
+        <h4>Notifications</h4>
+
+        <div class="notif-item">
+            <i class="ri-video-line"></i>
+            <div>
+                <p>New video uploaded</p>
+                <span>2 hours ago</span>
+            </div>
+        </div>
+
+        <div class="notif-item">
+            <i class="ri-live-line"></i>
+            <div>
+                <p>Channel is live now</p>
+                <span>5 hours ago</span>
+            </div>
+        </div>
+
+        <div class="notif-item">
+            <i class="ri-music-line"></i>
+            <div>
+                <p>New music available</p>
+                <span>1 day ago</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- SIGN IN POPUP -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <div class="modal-header">
+                <i class="ri-youtube-fill modal-yt-icon"></i>
+                <h2>Sign in</h2>
+                <p>Continue to YouTube</p>
+            </div>
+
+            <div class="modal-body">
+                <input type="text" id="nameInput" placeholder="Enter your name">
+                <input type="email" id="emailInput" placeholder="Enter your email">
+                <input type="password" id="passwordInput" placeholder="Enter your password">
+            </div>
+
+            <div class="modal-footer">
+                <button class="cancel-btn" id="cancelBtn">Cancel</button>
+                <button class="confirm-btn" id="confirmBtn">Sign in</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
