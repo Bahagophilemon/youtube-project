@@ -495,7 +495,7 @@ body {
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    height: 180px;
+   height: 300px;
 }
 
 .video-card:hover {
@@ -626,26 +626,6 @@ body {
     transform: scale(1.05);
 }
 
-/* PLAY OVERLAY */
-.play-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: 0.3s;
-}
-
-.play-overlay i {
-    font-size: 60px;
-    color: white;
-}
-
-.video-card:hover .play-overlay {
-    opacity: 1;
-}
 
 /* VIDEO ANIMATION */
 .video-card:hover {
@@ -662,4 +642,70 @@ body {
     display: flex;
     flex-direction: row;
     gap: 12px;
+}
+/* FIX: Allow card to grow so title shows */
+.video-card {
+    height: auto;
+    min-height: 180px;
+}
+/* FIX: Mobile video width */
+@media (max-width: 768px) {
+    .video-card {
+        width: 100%;
+    }
+
+    .thumbnail {
+        width: 100%;
+        height: auto;
+    }
+
+    .thumbnail iframe {
+        width: 100%;
+        height: 200px;
+    }
+}
+/* FIX: Mobile sidebar overlay */
+.sidebar.open {
+    display: block;
+    position: fixed;
+    top: 106px;
+    left: 0;
+    width: 240px;
+    height: calc(100vh - 106px);
+    z-index: 150;
+    background: white;
+    box-shadow: 4px 0 16px rgba(0,0,0,0.15);
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 140;
+}
+
+.sidebar-overlay.show {
+    display: block;
+}
+/* MOBILE TAP TO PLAY INDICATOR */
+.video-card.playing {
+    outline: 3px solid #ff0000;
+    border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+    .video-card::after {
+        content: 'Tap to play';
+        display: block;
+        text-align: center;
+        font-size: 11px;
+        color: #606060;
+        padding: 4px 0 8px;
+    }
+
+    .video-card.playing::after {
+        content: 'Tap to pause';
+        color: #ff0000;
+    }
 }
