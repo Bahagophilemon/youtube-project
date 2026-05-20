@@ -542,6 +542,7 @@ body {
     display: block;
     pointer-events: none;
 }
+
 /* ── VIDEO INFO ── */
 .video-info {
     display: flex;

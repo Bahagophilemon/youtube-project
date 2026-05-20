@@ -150,7 +150,6 @@ document.querySelectorAll('.sidebar-item').forEach(item => {
         }
     });
 });
-
 // ── EVENTS ──
 searchBtn.addEventListener('click', doSearch);
 searchInput.addEventListener('keyup', (e) => {
