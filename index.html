@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube</title>
-
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.0.0/fonts/remixicon.css" rel="stylesheet">
 </head>
-
 <body>
 
-    <!-- TOP HEADER -->
+    <!-- HEADER -->
     <div class="header">
         <div class="left">
-            <span class="menu-btn"><i class="ri-menu-line"></i></span>
-
+            <span class="menu-btn" id="menuBtn"><i class="ri-menu-line"></i></span>
             <div class="logo">
                 <i class="ri-youtube-fill yt-icon"></i>
                 <h2>YouTube</h2>
@@ -29,20 +26,18 @@
 
         <div class="right">
             <span class="icon-btn"><i class="ri-video-add-line"></i></span>
-
-            <div class="notif-wrapper">
+            <div class="notif-wrapper" id="notifBtn">
                 <i class="ri-notification-line"></i>
                 <span class="notif-badge">3</span>
             </div>
-
             <button class="signin-btn" id="signinBtn">
                 <i class="ri-user-line"></i>
-                Sign in
+                <span>Sign in</span>
             </button>
         </div>
     </div>
 
-    <!-- CATEGORY BAR -->
+    <!-- CHIPS BAR -->
     <div class="chips-bar">
         <div class="chip active">All</div>
         <div class="chip">Music</div>
@@ -60,243 +55,256 @@
         <div class="chip">Watched</div>
     </div>
 
-    <!-- MAIN PAGE -->
+    <!-- MAIN -->
     <div class="main">
 
-        <!-- LEFT SIDE MENU -->
+        <!-- SIDEBAR -->
         <div class="sidebar" id="sidebar">
-
             <div class="sidebar-item active">
                 <i class="ri-home-5-fill"></i><span>Home</span>
             </div>
-
             <div class="sidebar-item">
-                <i class="ri-movie-line"></i><span>Short Videos</span>
+                <i class="ri-movie-line"></i><span>Shorts</span>
             </div>
-
             <div class="sidebar-item">
                 <i class="ri-tv-line"></i><span>Subscriptions</span>
             </div>
-
             <hr>
-
-            <p class="section-title">Your Section</p>
-
+            <p class="section-title">You</p>
             <div class="sidebar-item">
-                <i class="ri-history-line"></i><span>Watch History</span>
+                <i class="ri-history-line"></i><span>History</span>
             </div>
-
             <div class="sidebar-item">
-                <i class="ri-play-list-line"></i><span>Your Playlists</span>
+                <i class="ri-play-list-line"></i><span>Playlists</span>
             </div>
-
             <div class="sidebar-item">
                 <i class="ri-time-line"></i><span>Watch Later</span>
             </div>
-
             <div class="sidebar-item">
                 <i class="ri-thumb-up-line"></i><span>Liked Videos</span>
             </div>
-
             <div class="sidebar-item">
                 <i class="ri-download-line"></i><span>Downloads</span>
             </div>
-
             <hr>
-
             <p class="section-title">Explore</p>
-
             <div class="sidebar-item">
                 <i class="ri-music-line"></i><span>Music</span>
             </div>
-
             <div class="sidebar-item">
                 <i class="ri-gamepad-line"></i><span>Gaming</span>
             </div>
-
             <div class="sidebar-item">
                 <i class="ri-newspaper-line"></i><span>News</span>
             </div>
-
             <div class="sidebar-item">
                 <i class="ri-arrow-down-s-line"></i><span>More</span>
             </div>
-
             <hr>
-
             <p class="section-title">More from YouTube</p>
-
             <div class="sidebar-item yt-premium">
                 <i class="ri-youtube-line"></i><span>YouTube Premium</span>
             </div>
-
             <div class="sidebar-item yt-music">
                 <i class="ri-music-2-line"></i><span>YouTube Music</span>
             </div>
-
             <div class="sidebar-item yt-kids">
                 <i class="ri-parent-line"></i><span>YouTube Kids</span>
             </div>
-
         </div>
 
-        <!-- VIDEOS AREA -->
+        <!-- SIDEBAR OVERLAY (mobile) -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- CONTENT GRID -->
         <div class="content" id="content">
 
-           <!-- VIDEO 1 -->
-<div class="video-card">
-    <div class="thumbnail">
-        <iframe src="https://www.youtube.com/embed/ykztGVW6x7w?mute=1&controls=0" allowfullscreen></iframe>
-    </div>
-    <div class="video-info">
-        <div class="channel-icon" style="background:#e53935;">W</div>
-        <div class="video-details">
-            <p class="video-title">Build YouTube Clone with HTML CSS</p>
-            <p class="channel-name">Web Dev Simplified</p>
-            <p class="video-meta">245K views · 1 year ago</p>
+            <!-- VIDEO 1 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <iframe src="https://www.youtube.com/embed/ykztGVW6x7w?mute=1&controls=0" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background:#e53935;">W</div>
+                    <div class="video-details">
+                        <p class="video-title">Build YouTube Clone with HTML CSS</p>
+                        <p class="channel-name">Web Dev Simplified</p>
+                        <p class="video-meta">245K views · 1 year ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 2 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <iframe src="https://www.youtube.com/embed/W6NZfCO5SIk?mute=1&controls=0" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background:#1e88e5;">P</div>
+                    <div class="video-details">
+                        <p class="video-title">JavaScript Full Course</p>
+                        <p class="channel-name">Programming with Mosh</p>
+                        <p class="video-meta">1.2M views · 8 months ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 3 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <iframe src="https://www.youtube.com/embed/0xMQfnTU6oo?mute=1&controls=0" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background:#43a047;">T</div>
+                    <div class="video-details">
+                        <p class="video-title">CSS Grid Tutorial</p>
+                        <p class="channel-name">Traversy Media</p>
+                        <p class="video-meta">830K views · 2 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 4 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <iframe src="https://www.youtube.com/embed/w7ejDZ8SWv8?mute=1&controls=0" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background:#8e24aa;">C</div>
+                    <div class="video-details">
+                        <p class="video-title">React JS Crash Course</p>
+                        <p class="channel-name">Codevolution</p>
+                        <p class="video-meta">520K views · 6 months ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 5 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <iframe src="https://www.youtube.com/embed/TlB_eWDSMt4?mute=1&controls=0" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background:#f4511e;">D</div>
+                    <div class="video-details">
+                        <p class="video-title">Node JS Beginner Tutorial</p>
+                        <p class="channel-name">Dev Ed</p>
+                        <p class="video-meta">300K views · 1 year ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 6 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <iframe src="https://www.youtube.com/embed/pQN-pnXPaVg?mute=1&controls=0" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background:#00897b;">F</div>
+                    <div class="video-details">
+                        <p class="video-title">HTML Full Tutorial for Beginners</p>
+                        <p class="channel-name">freeCodeCamp</p>
+                        <p class="video-meta">2M views · 3 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 7 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <iframe src="https://www.youtube.com/embed/jUuqBZwwkQw?mute=1&controls=0" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background:#f9a825;">E</div>
+                    <div class="video-details">
+                        <p class="video-title">Build Netflix Clone</p>
+                        <p class="channel-name">Easy Tutorials</p>
+                        <p class="video-meta">420K views · 11 months ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 8 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <iframe src="https://www.youtube.com/embed/3YW65K6LcIA?mute=1&controls=0" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background:#43a047;">T</div>
+                    <div class="video-details">
+                        <p class="video-title">CSS Flexbox Crash Course</p>
+                        <p class="channel-name">Traversy Media</p>
+                        <p class="video-meta">1.4M views · 4 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 9 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <iframe src="https://www.youtube.com/embed/rfscVS0vtbw?mute=1&controls=0" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background:#00897b;">F</div>
+                    <div class="video-details">
+                        <p class="video-title">Python Full Course for Beginners</p>
+                        <p class="channel-name">freeCodeCamp</p>
+                        <p class="video-meta">5M views · 2 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 10 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <iframe src="https://www.youtube.com/embed/ExcRbA7fy_A?mute=1&controls=0" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background:#2e7d32;">P</div>
+                    <div class="video-details">
+                        <p class="video-title">MongoDB Full Tutorial</p>
+                        <p class="channel-name">Programming with Mosh</p>
+                        <p class="video-meta">2.3M views · 2 years ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 11 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <iframe src="https://www.youtube.com/embed/UBOj6rqRUME?mute=1&controls=0" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background:#0288d1;">T</div>
+                    <div class="video-details">
+                        <p class="video-title">Tailwind CSS Full Course</p>
+                        <p class="channel-name">Traversy Media</p>
+                        <p class="video-meta">910K views · 1 year ago</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 12 -->
+            <div class="video-card">
+                <div class="thumbnail">
+                    <iframe src="https://www.youtube.com/embed/BwuLxPH8IDs?mute=1&controls=0" allowfullscreen></iframe>
+                </div>
+                <div class="video-info">
+                    <div class="channel-icon" style="background:#3949ab;">A</div>
+                    <div class="video-details">
+                        <p class="video-title">TypeScript for Beginners</p>
+                        <p class="channel-name">Academind</p>
+                        <p class="video-meta">1.1M views · 3 years ago</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
-</div>
 
-<!-- VIDEO 2 -->
-<div class="video-card">
-    <div class="thumbnail">
-        <iframe src="https://www.youtube.com/embed/W6NZfCO5SIk?mute=1&controls=0" allowfullscreen></iframe>
-    </div>
-    <div class="video-info">
-        <div class="channel-icon" style="background:#1e88e5;">P</div>
-        <div class="video-details">
-            <p class="video-title">JavaScript Full Course</p>
-            <p class="channel-name">Programming with Mosh</p>
-            <p class="video-meta">1.2M views · 8 months ago</p>
-        </div>
-    </div>
-</div>
-
-<!-- VIDEO 3 -->
-<div class="video-card">
-    <div class="thumbnail">
-        <iframe src="https://www.youtube.com/embed/0xMQfnTU6oo?mute=1&controls=0" allowfullscreen></iframe>
-    </div>
-    <div class="video-info">
-        <div class="channel-icon" style="background:#43a047;">T</div>
-        <div class="video-details">
-            <p class="video-title">CSS Grid Tutorial</p>
-            <p class="channel-name">Traversy Media</p>
-            <p class="video-meta">830K views · 2 years ago</p>
-        </div>
-    </div>
-</div>
-
-<!-- VIDEO 4 -->
-<div class="video-card">
-    <div class="thumbnail">
-        <iframe src="https://www.youtube.com/embed/w7ejDZ8SWv8?mute=1&controls=0" allowfullscreen></iframe>
-    </div>
-    <div class="video-info">
-        <div class="channel-icon" style="background:#8e24aa;">C</div>
-        <div class="video-details">
-            <p class="video-title">React JS Crash Course</p>
-            <p class="channel-name">Codevolution</p>
-            <p class="video-meta">520K views · 6 months ago</p>
-        </div>
-    </div>
-</div>
-
-<!-- VIDEO 5 -->
-<div class="video-card">
-    <div class="thumbnail">
-        <iframe src="https://www.youtube.com/embed/TlB_eWDSMt4?mute=1&controls=0" allowfullscreen></iframe>
-    </div>
-    <div class="video-info">
-        <div class="channel-icon" style="background:#f4511e;">D</div>
-        <div class="video-details">
-            <p class="video-title">Node JS Beginner Tutorial</p>
-            <p class="channel-name">Dev Ed</p>
-            <p class="video-meta">300K views · 1 year ago</p>
-        </div>
-    </div>
-</div>
-
-<!-- VIDEO 6 -->
-<div class="video-card">
-    <div class="thumbnail">
-        <iframe src="https://www.youtube.com/embed/pQN-pnXPaVg?mute=1&controls=0" allowfullscreen></iframe>
-    </div>
-    <div class="video-info">
-        <div class="channel-icon" style="background:#00897b;">F</div>
-        <div class="video-details">
-            <p class="video-title">HTML Full Tutorial</p>
-            <p class="channel-name">freeCodeCamp</p>
-            <p class="video-meta">2M views · 3 years ago</p>
-        </div>
-    </div>
-</div>
-
-<!-- VIDEO 7 -->
-<div class="video-card">
-    <div class="thumbnail">
-        <iframe src="https://www.youtube.com/embed/jUuqBZwwkQw?mute=1&controls=0" allowfullscreen></iframe>
-    </div>
-    <div class="video-info">
-        <div class="channel-icon" style="background:#f9a825;">E</div>
-        <div class="video-details">
-            <p class="video-title">Build Netflix Clone</p>
-            <p class="channel-name">Easy Tutorials</p>
-            <p class="video-meta">420K views · 11 months ago</p>
-        </div>
-    </div>
-</div>
-
-<!-- VIDEO 8 -->
-<div class="video-card">
-    <div class="thumbnail">
-        <iframe src="https://www.youtube.com/embed/3YW65K6LcIA?mute=1&controls=0" allowfullscreen></iframe>
-    </div>
-    <div class="video-info">
-        <div class="channel-icon" style="background:#43a047;">T</div>
-        <div class="video-details">
-            <p class="video-title">CSS Flexbox Crash Course</p>
-            <p class="channel-name">Traversy Media</p>
-            <p class="video-meta">1.4M views · 4 years ago</p>
-        </div>
-    </div>
-</div>
-
-<!-- VIDEO 9 -->
-<div class="video-card">
-    <div class="thumbnail">
-        <iframe src="https://www.youtube.com/embed/rfscVS0vtbw?mute=1&controls=0" allowfullscreen></iframe>
-    </div>
-    <div class="video-info">
-        <div class="channel-icon" style="background:#00897b;">F</div>
-        <div class="video-details">
-            <p class="video-title">Python Full Course for Beginners</p>
-            <p class="channel-name">freeCodeCamp</p>
-            <p class="video-meta">5M views · 2 years ago</p>
-        </div>
-    </div>
-</div>
-
-<!-- VIDEO 10 -->
-<div class="video-card">
-    <div class="thumbnail">
-        <iframe src="https://www.youtube.com/embed/ExcRbA7fy_A?mute=1&controls=0" allowfullscreen></iframe>
-    </div>
-    <div class="video-info">
-        <div class="channel-icon" style="background:#2e7d32;">P</div>
-        <div class="video-details">
-            <p class="video-title">MongoDB Full Tutorial</p>
-            <p class="channel-name">Programming with Mosh</p>
-            <p class="video-meta">2.3M views · 2 years ago</p>
-        </div>
-    </div>
-</div>
-
-    <!-- NOTIFICATIONS -->
+    <!-- NOTIFICATION DROPDOWN -->
     <div class="notif-dropdown" id="notifDropdown">
         <h4>Notifications</h4>
-
         <div class="notif-item">
             <i class="ri-video-line"></i>
             <div>
@@ -304,7 +312,6 @@
                 <span>2 hours ago</span>
             </div>
         </div>
-
         <div class="notif-item">
             <i class="ri-live-line"></i>
             <div>
@@ -312,7 +319,6 @@
                 <span>5 hours ago</span>
             </div>
         </div>
-
         <div class="notif-item">
             <i class="ri-music-line"></i>
             <div>
@@ -322,35 +328,25 @@
         </div>
     </div>
 
-    <!-- SIGN IN POPUP -->
+    <!-- SIGN IN MODAL -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal">
-
             <div class="modal-header">
                 <i class="ri-youtube-fill modal-yt-icon"></i>
                 <h2>Sign in</h2>
                 <p>Continue to YouTube</p>
             </div>
-
             <div class="modal-body">
                 <input type="text" id="nameInput" placeholder="Enter your name">
                 <input type="email" id="emailInput" placeholder="Enter your email">
                 <input type="password" id="passwordInput" placeholder="Enter your password">
             </div>
-
             <div class="modal-footer">
                 <button class="cancel-btn" id="cancelBtn">Cancel</button>
                 <button class="confirm-btn" id="confirmBtn">Sign in</button>
             </div>
-
         </div>
     </div>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <p>Developed by: YOUR NAME HERE</p>
-        <p>Reg No: YOUR REG NUMBER HERE</p>
-    </footer>
 
     <script src="script.js"></script>
 </body>
